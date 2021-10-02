@@ -6,6 +6,13 @@ import Loader from './Loader';
 import Message from './Message';
 import { listTopProducts } from '../actions/productActions';
 
+const getPrice = (price) => {
+	if (price < 10) return 'X';
+	else if (price < 100) return Math.floor(price / 10) + 'X';
+	else if (price < 1000) return Math.floor(price / 100) + 'XX';
+	else if (price < 10000) return Math.floor(price / 1000 + 'XXX');
+};
+
 const ProductCarousel = () => {
 	const dispatch = useDispatch();
 
@@ -19,16 +26,16 @@ const ProductCarousel = () => {
 	return loading ? (
 		<Loader />
 	) : error ? (
-		<Message variant="danger">{error}</Message>
+		<Message variant='danger'>{error}</Message>
 	) : (
-		<Carousel pause="hover" className="bg-dark">
+		<Carousel pause='hover' className='bg-dark'>
 			{products.map((product, index) => (
 				<Carousel.Item key={product._id}>
 					<Link to={`/product/${product._id}`}>
 						<Image src={product.image} alt={product.name} fluid />
-						<Carousel.Caption className="carousel-caption">
+						<Carousel.Caption className='carousel-caption'>
 							<h2>
-								TOP {index + 1} : {product.name} ( ${product.price} )
+								TOP {index + 1} : {product.name} ( ${getPrice(product.price)} )
 							</h2>
 						</Carousel.Caption>
 					</Link>

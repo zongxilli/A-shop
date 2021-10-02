@@ -19,32 +19,26 @@ const Header = ({ location, history }) => {
 
 	return (
 		<header>
-			<Navbar bg="dark" variant="dark" expand="lg" CollapseOnSelect>
+			<Navbar bg='dark' variant='dark' expand='lg' CollapseOnSelect>
 				<Container>
-					<LinkContainer to="/">
-						<Navbar.Brand>Kenny's Shop</Navbar.Brand>
+					<LinkContainer to='/'>
+						<Navbar.Brand>Anthony's Shop</Navbar.Brand>
 					</LinkContainer>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
+					<Navbar.Toggle aria-controls='basic-navbar-nav' />
+					<Navbar.Collapse id='basic-navbar-nav'>
+						<Route render={({ history }) => <SearchBox history={history} />} />
 
-
-					<Route render={({history}) => <SearchBox history={history} />} />
-
-
-
-
-
-						<Nav className="ms-auto">
+						<Nav className='ms-auto'>
 							{/* -------------------- cart -------------------- */}
-							<LinkContainer to="/cart">
+							{/* <LinkContainer to='/cart'>
 								<Nav.Link>
-									<i className="fas fa-shopping-cart"></i> Cart
+									<i className='fas fa-shopping-cart'></i> Cart
 								</Nav.Link>
-							</LinkContainer>
+							</LinkContainer> */}
 							{/* -------------------- Profile Dropdown(profile || logout) & login -------------------- */}
 							{userInfo ? (
-								<NavDropdown title={userInfo.name} id="username">
-									<LinkContainer to="/profile">
+								<NavDropdown title={userInfo.name} id='username'>
+									<LinkContainer to='/profile'>
 										<NavDropdown.Item>Profile</NavDropdown.Item>
 									</LinkContainer>
 									<NavDropdown.Item onClick={logoutHandler}>
@@ -52,22 +46,22 @@ const Header = ({ location, history }) => {
 									</NavDropdown.Item>
 								</NavDropdown>
 							) : (
-								<LinkContainer to="/login">
+								<LinkContainer to='/login'>
 									<Nav.Link>
-										<i className="fas fa-user"></i>Sign In
+										<i className='fas fa-user'></i>Sign In
 									</Nav.Link>
 								</LinkContainer>
 							)}
 							{/* -------------------- Admin Dropdown(Users || Products || Orders) & login -------------------- */}
 							{userInfo && userInfo.isAdmin && (
-								<NavDropdown title="Admin" id="adminmenu">
-									<LinkContainer to="/admin/userlist">
+								<NavDropdown title='Admin' id='adminmenu'>
+									<LinkContainer to='/admin/userlist'>
 										<NavDropdown.Item>Users</NavDropdown.Item>
 									</LinkContainer>
-									<LinkContainer to="/admin/productlist">
+									<LinkContainer to='/admin/productlist'>
 										<NavDropdown.Item>Products</NavDropdown.Item>
 									</LinkContainer>
-									<LinkContainer to="/admin/orderlist">
+									<LinkContainer to='/admin/orderlist'>
 										<NavDropdown.Item>Orders</NavDropdown.Item>
 									</LinkContainer>
 								</NavDropdown>
@@ -77,7 +71,7 @@ const Header = ({ location, history }) => {
 				</Container>
 			</Navbar>
 		</header>
-	); 
+	);
 };
 
 export default withRouter(Header);
