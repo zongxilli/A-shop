@@ -125,14 +125,14 @@ const ProductScreen = ({ history, match }) => {
 							<Card>
 								{/* .......... Price .......... */}
 								<ListGroup variant='flush'>
-									<ListGroup.Item>
+									{/* <ListGroup.Item>
 										<Row>
 											<Col>Price:</Col>
 											<Col>
 												<strong>${getPrice(product.price)}</strong>
 											</Col>
 										</Row>
-									</ListGroup.Item>
+									</ListGroup.Item> */}
 
 									{/* .......... Status .......... */}
 									<ListGroup.Item>

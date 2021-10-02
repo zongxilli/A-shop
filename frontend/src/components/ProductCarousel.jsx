@@ -34,8 +34,11 @@ const ProductCarousel = () => {
 					<Link to={`/product/${product._id}`}>
 						<Image src={product.image} alt={product.name} fluid />
 						<Carousel.Caption className='carousel-caption'>
-							<h2>
+							{/* <h2>
 								TOP {index + 1} : {product.name} ( ${getPrice(product.price)} )
+							</h2> */}
+							<h2>
+								TOP {index + 1} : {product.name}
 							</h2>
 						</Carousel.Caption>
 					</Link>
